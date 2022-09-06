@@ -36,6 +36,11 @@ public class MainActivity extends AppCompatActivity {
         Button showButton = findViewById(R.id.showBtn);
         Spinner spinner = findViewById(R.id.spinner);
 
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, team_namesArraylist);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
 
         String url ="http://192.168.2.3/matches/getMembers.php";
 
@@ -57,15 +62,12 @@ public class MainActivity extends AppCompatActivity {
 
 
                 runOnUiThread( ()-> {
-
+                    adapter.notifyDataSetChanged();
                 });
             }
         });
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, team_namesArraylist);
 
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+
 
 
         showButton.setOnClickListener(new View.OnClickListener() {
