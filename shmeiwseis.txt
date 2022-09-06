@@ -1,0 +1,52 @@
+AndroidManifest.xml:
+
+<uses-permission android:name="android.permission.INTERNET" />
+android:usesCleartextTraffic="true">
+
+
+build.gradle
+
+// OkHttp
+implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+
+ // Picasso
+ implementation 'com.squareup.picasso:picasso:2.5.2'
+
+
+okhttp
+
+protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        TextView mTextViewResult = findViewById(R.id.text_view_result);
+
+        OkHttpClient client = new OkHttpClient();
+
+        String url ="http://192.168.2.3/matches/getFixtures.php";
+
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                if(response.isSuccessful()){
+                    String myResponse = response.body().string();
+                    MainActivity.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mTextViewResult.setText(myResponse);
+                        }
+                    });
+                }
+            }
+        });
+
+    }
