@@ -5,9 +5,9 @@ import org.json.JSONObject;
 
 public class Animal {
 
-    private String emblem;
-    private String players;
-    private String ;
+    private String name;
+    private String type;
+    private String voice;
     private String image;
 
     public Animal(String name, String type, String voice, String image) {

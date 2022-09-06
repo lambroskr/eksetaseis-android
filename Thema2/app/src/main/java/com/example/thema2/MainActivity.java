@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         RadioGroup radioGroup = findViewById(R.id.radioGroup);
         Button nextButton = findViewById(R.id.button2);
 
-        String url = "http://localhost/matches/getMembers.php";
+        String url = "http://195.251.211.64/animals/getAnimals.php";
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(url).get().build();
         client.newCall(request).enqueue(new Callback() {
@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
                     for (int i=0; i<animalArrayList.size(); i++) {
                         RadioButton rb = new RadioButton(getApplicationContext());
                         rb.setText(animalArrayList.get(i).getName());
-
                         int finalI = i;
                         rb.setOnClickListener(v->{
                             selected = animalArrayList.get(finalI);

@@ -24,13 +24,6 @@ public class AnimalList {
     public AnimalList(String response) {
         try {
             JSONObject object = new JSONObject(response);
-
-
-
-
-
-
-
             Iterator<String> keys = object.keys();
             animalList.clear();
             while (keys.hasNext()) {
