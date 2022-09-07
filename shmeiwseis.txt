@@ -12,6 +12,11 @@ implementation 'com.squareup.okhttp3:okhttp:4.9.0'
  // Picasso
  implementation 'com.squareup.picasso:picasso:2.5.2'
 
+Cut string in mathematical expressions:
+ String string = "1+2";
+        String[] split = string.split("(?<=\\d)(?=\\D)|(?<=\\D)(?=\\d)");
+
+
 
 okhttp
 
